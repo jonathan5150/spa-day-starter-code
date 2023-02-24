@@ -6,31 +6,29 @@ import javax.validation.constraints.Size;
 
 public class User {
 
-    private static int nextId = 1;
-
-    private int id;
-
-    @NotBlank
+    @NotBlank(message = "Username can not be left blank.")
     @Size(min = 5, max = 15, message = "Username must be between 5 and 15 characters.")
     private String username;
 
     @Email(message = "Invalid email. Please try again.")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Password can not be left blank.")
     @Size(min = 6, message = "Password must be at least 6 characters in length.")
     private String password;
 
+    @NotBlank(message = "Password verification can not be left blank.")
+    private String verify;
+
     public User() {
-        this.id = nextId;
-        nextId++;
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password, String verify) {
         this();
         this.username = username;
         this.email = email;
         this.password = password;
+        this.verify = verify;
     }
 
     public String getUsername() {
@@ -55,5 +53,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getVerify() {
+        return verify;
+    }
+
+    public void setVerify(String verify) {
+        this.verify = verify;
     }
 }

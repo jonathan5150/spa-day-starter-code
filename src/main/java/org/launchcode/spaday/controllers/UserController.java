@@ -15,16 +15,15 @@ public class UserController {
 
     @GetMapping("/add")
     public String displayAddUserForm(Model model) {
-        model.addAttribute(new User());
+        model.addAttribute("user", new User());
         return "user/add";
     }
 
-    @PostMapping
-    public String processAddUserForm(@ModelAttribute @Valid User user, String verify,
-                                     Errors errors, Model model) {
+    @PostMapping()
+    public String processAddUserForm(Model model, @ModelAttribute @Valid User user, Errors errors, String verify) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("errorMsg", "Bad data!");
+            //model.addAttribute("errorMsg", "Bad data!");
             return "user/add";
         }
 

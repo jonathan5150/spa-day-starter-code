@@ -9,13 +9,16 @@
     <h3>Sign Up For an Account</h3>
     <form method = 'post' th:action="@{/user}">
 
-        <p th:text="${errorMsg}" style="color: red"></p>
+        <label>Username: <input type='text' th:field="${user.username}" th:value="${user.username}"></label>
+        <p class="error" th:errors="${user.username}"></p>
+        <label>Email: <input th:field="${user.email}" th:value="${user.email}"></label>
+        <p class="error" th:errors="${user.email}"></p>
+        <label>Password: <input type='password' th:field="${user.password}" th:value="${user.password}"></label>
+        <p class="error" th:errors="${user.password}"></p>
+        <label>Verify Password: <input type='password' th:field="${user.verify}" th:value="${user.verify}"></label>
+        <p class="error" th:errors="${user.verify}"></p>
 
-        <label>Username: <input type='text' name='username' th:value="${user.username}"></label>
-        <label>Email: <input name='email' th:value="${user.email}"></label>
-        <label>Password: <input type='password' name='password' th:value="${user.password}"></label>
-        <label>Verify Password: <input type='password' name='verify' ></label>
-        <p th:if="${error}" th:text="${error}" style="color: red"></p>
+        <p th:text="${error}" style="color: red"></p>
 
         <input type = 'submit' value = 'Sign Up'>
     </form>
