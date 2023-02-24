@@ -7,15 +7,15 @@
 </head>
 <body>
     <h3>Sign Up For an Account</h3>
-    <form method = 'post' th:action="@{/user}">
+    <form method = 'post'>
 
-        <label>Username: <input type='text' th:field="${user.username}" th:value="${user.username}"></label>
+        <label>Username: <input type='text' th:field="${user.username}" th:value="${user.username}"></label> <br>
         <p class="error" th:errors="${user.username}"></p>
-        <label>Email: <input th:field="${user.email}" th:value="${user.email}"></label>
+        <label>Email (Optional): <input th:field="${user.email}" th:value="${user.email}"></label> <br>
         <p class="error" th:errors="${user.email}"></p>
-        <label>Password: <input type='password' th:field="${user.password}" th:value="${user.password}"></label>
+        <label>Password: <input type='password' th:field="${user.password}" th:value="${user.password}"></label> <br>
         <p class="error" th:errors="${user.password}"></p>
-        <label>Verify Password: <input type='password' th:field="${user.verify}" th:value="${user.verify}"></label>
+        <label>Verify Password: <input type='password' th:field="${user.verify}" th:value="${user.verify}"></label>  <br>
         <p class="error" th:errors="${user.verify}"></p>
 
         <p th:text="${error}" style="color: red"></p>

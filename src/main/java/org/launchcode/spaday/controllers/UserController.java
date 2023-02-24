@@ -19,7 +19,7 @@ public class UserController {
         return "user/add";
     }
 
-    @PostMapping()
+    @PostMapping("/add")
     public String processAddUserForm(Model model, @ModelAttribute @Valid User user, Errors errors, String verify) {
 
         if (errors.hasErrors()) {
@@ -32,7 +32,7 @@ public class UserController {
 //        model.addAttribute("username", user.getUsername());
 //        model.addAttribute("email", user.getEmail());
 
-        if (user.getPassword().equals(verify)) {
+        if (!errors.hasErrors() && user.getPassword().equals(verify)) {
            return "user/index";
         }
         else {
